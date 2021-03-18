@@ -29,21 +29,5 @@
       ],
       "attribute-references": []
     }
-  ],
-  "role-collections": [
-    {
-      "name": "RiskManager",
-      "description": "Manage Risks",
-      "role-template-references": [
-        "$XSAPPNAME.RiskManager"
-      ]
-    },
-    {
-      "name": "RiskViewer",
-      "description": "View Risks",
-      "role-template-references": [
-        "$XSAPPNAME.RiskViewer"
-      ]
-    }
   ]
 }
