@@ -33,7 +33,7 @@ annotate RiskService.Risks with @(
 		LineItem: [
 			{Value: title},
 			{Value: miti_ID},
-			{Value: bp_BusinessPartner},
+			{Value: bp_ID},
 			{
 				Value: prio,
 				Criticality: criticality 
@@ -55,7 +55,7 @@ annotate RiskService.Risks with @(
 					Value: prio,
 					Criticality: criticality
 				},
-				{Value: bp_BusinessPartner},
+				{Value: bp_ID},
 				{
 					Value: impact,
 					Criticality: criticality
@@ -90,32 +90,40 @@ annotate RiskService.Risks with {
 	);
 	bp @(
 		Common: {
-			Text: bp.BusinessPartnerFullName  , TextArrangement: #TextOnly,
+			Text: bp.ID  , TextArrangement: #TextOnly,
 			ValueList: {
 				Label: 'Business Partners',
 				CollectionPath: 'BusinessPartners',
 				Parameters: [
 					{ $Type: 'Common.ValueListParameterInOut',
-						LocalDataProperty: bp_BusinessPartner,
-						ValueListProperty: 'BusinessPartner'
+						LocalDataProperty: bp_ID,
+						ValueListProperty: 'ID'
 					},
 					{ $Type: 'Common.ValueListParameterDisplayOnly',
-						ValueListProperty: 'BusinessPartnerFullName'
+						ValueListProperty: 'businessPartnerFullName'
+					},
+					{ $Type: 'Common.ValueListParameterDisplayOnly',
+						ValueListProperty: 'businessPartnerIsBlocked'
+					},
+                    { $Type: 'Common.ValueListParameterDisplayOnly',
+						ValueListProperty: 'searchTerm1'
 					}
 				]
 			}
 		}
-	)
+	);
 }
 
 
   annotate RiskService.BusinessPartners with {
-    BusinessPartner @(
-      UI.Hidden,
-      Common: {
-        Text: BusinessPartnerFullName
-      }
-    );
-    BusinessPartnerFullName  @title: 'Business Partner Name';
-    BusinessPartnerIsBlocked @title: 'Business Partner Blocked';
+    // ID @(
+    //   UI.Hidden,
+    //   Common: {
+    //     Text: businessPartnerFullName
+    //   }
+    // );
+    ID @title: 'Business Partner';
+    businessPartnerFullName    @title: 'Business Partner Name' @readonly;
+    businessPartnerIsBlocked   @title: 'Blocked Status' @readonly;
+    searchTerm1 @title: 'Search Term' @readonly;
   }
