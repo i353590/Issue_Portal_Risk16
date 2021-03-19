@@ -59,10 +59,21 @@ annotate RiskService.Risks with @(
 				{
 					Value: impact,
 					Criticality: criticality
-				}			
+				},
+				{Value : bp.businessPartnerFullName},
+                {Value : bp.businessPartnerIsBlocked},
+                {Value : bp.searchTerm1}		
 			]
 		}		
 	},
+	    Common.SideEffects : {
+        EffectTypes      : #ValueChange,
+        SourceProperties : [bp_ID],
+        TargetProperties : [
+            bp.businessPartnerFullName,
+            bp.searchTerm1
+        ]
+    }
 ) {
 
 }; 
