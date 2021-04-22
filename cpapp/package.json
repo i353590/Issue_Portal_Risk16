@@ -7,6 +7,9 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^5",
+    "@sap/cds-mtx": "^1.2.1",
+    "@sap/hdi-deploy": "^4.0.5",
+    "@sap/instance-manager": "^2.2.0",
     "@sap/xsenv": "^3.1.0",
     "@sap/xssec": "^3.2.0",
     "express": "^4",
