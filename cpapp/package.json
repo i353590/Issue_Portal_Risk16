@@ -29,7 +29,11 @@
   "cds": {
     "requires": {
       "db": {
-        "kind": "sql"
+        "kind": "sql",
+        "multiTenant": true,
+        "vcap": {
+          "label": "service-manager"
+        }
       },
       "uaa": {
         "kind": "xsuaa",
