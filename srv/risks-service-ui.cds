@@ -33,7 +33,7 @@ annotate RiskService.Risks with @(
 		LineItem: [
 			{Value: title},
 			{Value: miti_ID},
-			{Value: bp_ID},
+		        {Value: bp.businessPartnerFullName},
 			{
 				Value: prio,
 				Criticality: criticality 
