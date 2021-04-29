@@ -1,6 +1,6 @@
 {
     "emname": "cpappems",
-    "namespace": "refapps/cpappems/abc",
+    "namespace": "refapps/cpappems/s4c",
     "version": "1.1.0",
     "options": {
       "management": true,
@@ -13,7 +13,8 @@
           "${namespace}/*"
         ],
         "subscribeFilter": [
-          "${namespace}/*"
+          "${namespace}/*",
+          "sap/S4HANAOD/risk/*"
         ]
       },
       "topicRules": {
@@ -21,7 +22,8 @@
           "${namespace}/*"
         ],
         "subscribeFilter": [
-          "${namespace}/*"
+          "${namespace}/*",
+          "sap/S4HANAOD/risk/*"
         ]
       }
     }

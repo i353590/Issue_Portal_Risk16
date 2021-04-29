@@ -3,10 +3,10 @@ using RiskService from './risk-service';
 annotate RiskService.Risks with {
 	title       @title: 'Title';
 	prio        @title: 'Priority';
-	descr       @title: 'Description';   
-	miti        @title: 'Mitigation'; 
-	bp          @title: 'Business Partner';   
-	impact      @title: 'Impact'; 
+	descr       @title: 'Description';
+	miti        @title: 'Mitigation';
+	impact      @title: 'Impact';
+    bp          @title: 'Business Partner';
 }
 
 annotate RiskService.Mitigations with {
@@ -15,19 +15,18 @@ annotate RiskService.Mitigations with {
 		Common: {
 		Text: description
 		}
-	);    
-	description  @title: 'Description';   
-	owner        @title: 'Owner'; 
-	timeline     @title: 'Timeline';   
-	risks        @title: 'Risks'; 
+	);
+	description  @title: 'Description';
+	owner        @title: 'Owner';
+	timeline     @title: 'Timeline';
+	risks        @title: 'Risks';
 }
 
 annotate RiskService.Risks with @(
 	UI: {
 		HeaderInfo: {
 			TypeName: 'Risk',
-			TypeNamePlural: 'Risks',
-			
+			TypeNamePlural: 'Risks'
 		},
 		SelectionFields: [prio],
 		LineItem: [
@@ -36,7 +35,7 @@ annotate RiskService.Risks with @(
 			{Value: bp.businessPartnerFullName},
 			{
 				Value: prio,
-				Criticality: criticality 
+				Criticality: criticality
 			},
 			{
 				Value: impact,
@@ -55,31 +54,32 @@ annotate RiskService.Risks with @(
 					Value: prio,
 					Criticality: criticality
 				},
-				{Value: bp_ID},
-				{
+                {
 					Value: impact,
 					Criticality: criticality
 				},
-				{Value : bp.businessPartnerFullName},
+				{Value: bp_ID},
+                {Value : bp.businessPartnerFullName},
                 {Value : bp.businessPartnerIsBlocked},
-                {Value : bp.searchTerm1}		
+                {Value : bp.searchTerm1}
 			]
-		}		
+		}
 	},
-	    Common.SideEffects : {
+    Common.SideEffects : {
         EffectTypes      : #ValueChange,
         SourceProperties : [bp_ID],
         TargetProperties : [
             bp.businessPartnerFullName,
+            bp.businessPartnerIsBlocked,
             bp.searchTerm1
         ]
     }
 ) {
 
-}; 
+};
 
 annotate RiskService.Risks with {
-	miti @(	
+	miti @(
 		Common: {
 			//show text, not id for mitigation in the context of risks
 			Text: miti.description  , TextArrangement: #TextOnly,
@@ -87,13 +87,13 @@ annotate RiskService.Risks with {
 				Label: 'Mitigations',
 				CollectionPath: 'Mitigations',
 				Parameters: [
-					{ $Type: 'Common.ValueListParameterInOut', 
-						LocalDataProperty: miti_ID, 
-						ValueListProperty: 'ID' 
+					{ $Type: 'Common.ValueListParameterInOut',
+						LocalDataProperty: miti_ID,
+						ValueListProperty: 'ID'
 					},
-					{ $Type: 'Common.ValueListParameterDisplayOnly', 
-						ValueListProperty: 'description' 
-					}                                      
+					{ $Type: 'Common.ValueListParameterDisplayOnly',
+						ValueListProperty: 'description'
+					}
 				]
 			}
 		},
